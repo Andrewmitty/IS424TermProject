@@ -1,0 +1,19 @@
+{
+  "name": "mybulma",
+  "version": "1.0.0",
+  "description": "sass library for the sugar and lime site",
+  "main": "index.js",
+  "scripts": {
+    "css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
+
+  },
+  "author": "Andrew Mitty",
+  "license": "ISC",
+  "devDependencies": {
+    "bulma": "^0.9.4",
+    "node-sass": "^8.0.0"
+  }
+
+}

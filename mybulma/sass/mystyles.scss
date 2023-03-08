@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+
+//set colors
+$frostbite: #D63CB1;
+$khakiWeb: #CAB69A;
+$camel: #B58E49;
+$black: #000000;
+$white: #FFFFFF;
+$mossGreen: #929362;
+
+
+
+//update global vars
+$primary: $frostbite;
+$link: $khakiWeb;
+
+//import bulma classes
+@import "../mybulma/node_modules/bulma/bulma.sass";
