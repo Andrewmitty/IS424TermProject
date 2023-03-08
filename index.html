@@ -8,6 +8,8 @@
     <title>Sugar and Lime</title>
     <!-- //import bulma -->
     <link rel="stylesheet" href="mybulma/css/mystyles.css">
+    <!-- link app.js -->
+    
 </head>
 
 <div class="navbar is-primary is-spaced mb-0">
@@ -42,12 +44,9 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-link" href="login.html">
-                        <strong>Log in</strong>
-                    </a>
-                    <a class="button is-light has-text-primary" href="signup.html">
-                        Sign up
-                    </a>
+                    <button class="button is-link" id="signin"> Log in</button>
+
+                    <button class="button is-white has-text-primary" id="signup">Sign Up</button>
                 </div>
             </div>
         </div>
@@ -113,4 +112,92 @@
     </div>
 </div>
 
+
+<div class="modal" id="signupModal">
+    <div class="modal-background">
+
+    </div>
+    <div class="modal-content">
+        <div class="box">
+            <form>
+                <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input is-success" type="text" placeholder="Text input" value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input is-success" type="text" placeholder="Text input" value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <button href="index.html" id="signupDone" class="button is-primary">Submit</button>
+
+
+        </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="signinModal">
+    <div class="modal-background">
+
+    </div>
+    <div class="modal-content">
+        <div class="box">
+            <form>
+                <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input is-success" type="text" placeholder="Text input" value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input is-success" type="text" placeholder="Text input" value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <button href="index.html" id="signinDone" class="button is-primary">Submit</button>
+
+
+        </div>
+        </form>
+    </div>
+</div>
+</div>
+<script src="app.js"></script>
 </html>
