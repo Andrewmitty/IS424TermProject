@@ -1,0 +1,216 @@
+[{
+        "available": true,
+        "category": "Appetizers",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Appetizers%2FArabic%20Salad.jpeg?alt=media&token=51388ca8-9771-4d2c-a4f3-8d5499009c2d",
+        "name": "Arabic Salad",
+        "options": [
+            "No Green Onions",
+            "No Tomatoes",
+            "No Cucumbers",
+            "No Olives",
+            "Dressing on Side"
+        ],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Appetizers",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Appetizers%2FFruit%20Tart.jpeg?alt=media&token=c031d65a-66c7-4be4-aba1-e97300394f8b",
+        "name": "Fruit Tart",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Appetizers",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Appetizers%2FOpen%20Cracker%20Appetizer.jpeg?alt=media&token=f57c065f-d893-4107-9043-0c40f476ddd4",
+        "name": "Open Cracker Appetizer",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Appetizers",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Appetizers%2FSamosa%20Chaat.jpeg?alt=media&token=6265aeee-f7a6-4ee9-905e-78c712f364e2",
+        "name": "Samosa Chaat",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Appetizers",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Appetizers%2Fspicy%20masala%20potato.jpeg?alt=media&token=fab9e353-9631-48d3-b4a5-3086ffe73f4c",
+        "name": "Spicy masala potato",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Beverages",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Beverages%2FKashmiri%20Tea%20Bombs.jpeg?alt=media&token=2264613c-8a34-4c6e-a3ec-e71a0bda0064",
+        "name": "Kashmiri Tea Bombs",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Beverages",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Beverages%2Fbottled%20water.jpg?alt=media&token=683d5e08-77d4-49e4-b741-64d64234dd6e",
+        "name": "Bottled Water",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Beverages",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Beverages%2Fsoda.jpg?alt=media&token=67ee12d8-5ae3-49b4-9469-2f0f613f1fca",
+        "name": "Soda",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Cakes",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Cakes%2FRed%20Velvet%20Chocolate%20Roblox%20Xake.jpeg?alt=media&token=1e1bda53-824f-446b-8d12-a8f6f50e6b2f",
+        "name": "Red Velvet Chocolate Roblox Cake",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Cakes",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Cakes%2FStrwaberry%20flavored%20cake%20with%20white%20chocolate%20butter%20cream.jpeg?alt=media&token=7dbc2164-45d4-400a-90bc-684a2d2f2b09",
+        "name": "Strawberry Flavored Cake with White Chocolate Butter Cream",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Cakes",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Cakes%2FWhite%20chocolate%20vanilla%20cake%20with%20macaroons.jpeg?alt=media&token=a2f9be15-29ad-497c-90d7-60b327318222",
+        "name": "White Chocolate Vanilla Cake with Macaroons",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Cupcakes",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Cupcakes%2FChocolate%20cupcakes%20with%20colorful%20buttercream%20frosting.jpeg?alt=media&token=d131e2fa-e433-4845-b77a-9f1a7dad64bf",
+        "name": "Chocolate Cupcakes with Colorful Buttercream Frosting",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Cupcakes",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Cupcakes%2Fcustomized%20chocolate%20cupcakes.jpeg?alt=media&token=2ef0806d-0acc-4799-a5d3-e4e15a4f5c36",
+        "name": "Customized Chocolate Cupcakes",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Dessert",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Dessert%2FBiscoff%20Cheese%20Cake.jpeg?alt=media&token=f6484da6-a6b2-4c35-8545-1ca5f8d9db27",
+        "name": "Biscoff Cheese Cake",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Dessert",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Dessert%2FCustomized%20Sugar%20cookie.jpeg?alt=media&token=b2765a6f-b3ca-4da0-8bca-9ef9b28f5841",
+        "name": "Customized Sugar Cookie",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Dessert",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Dessert%2Fassorted%20cookie%20platter.jpeg?alt=media&token=5a2eacf8-3bfb-4a15-a476-25bdb2f3aaf9",
+        "name": "Assorted Cookie Platter",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Dessert",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Dessert%2Fchocolate%20orange%20desert%20bowl.jpeg?alt=media&token=0391067b-cf16-4b0f-8647-ce9a0201ba8d",
+        "name": "Chocolate Orange Dessert Bowl",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Mains",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Mains%2FCheeto%20Burger%20with%20Potato%20Wedges.jpeg?alt=media&token=5948f262-bcb4-4d8c-b5f3-905d298ffd19",
+        "name": "Cheeto Burger with Potato Wedges",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Mains",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Mains%2FChicken%20Tikka.jpeg?alt=media&token=3a4b2f09-69c3-45ee-be7b-06569f5630a0",
+        "name": "Chicken Tikka",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Mains",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Mains%2FMongolian%20Beef.jpeg?alt=media&token=7118e8dc-d87c-4cf2-997a-20b1fdea7cf7",
+        "name": "Mongolian Beef",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Mains",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Mains%2FMongolian%20Chicken%20with%20Garlic%20Fried%20Rice.jpeg?alt=media&token=84505393-a48c-4bf4-8c0b-c990e0d3b399",
+        "name": "Mongolian Chicken with Garlic Fried Rice",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Mains",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Mains%2Fchicken%20Chowmein.jpeg?alt=media&token=98a967c4-621c-42bc-9f1f-26ebfd89441a",
+        "name": "Chicken Chowmein",
+        "options": [],
+        "price": 4.99
+    },
+    {
+        "available": true,
+        "category": "Mains",
+        "description": "TODO",
+        "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Mains%2Fshawarma%20platter.jpeg?alt=media&token=e02ce320-abf2-42b4-822c-d2e6f3e4f79e",
+        "name": "Shawarma Platter",
+        "options": [],
+        "price": 4.99
+    }
+
+
+]
