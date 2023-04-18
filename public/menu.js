@@ -36,7 +36,7 @@ function addToCart(doc) {
     var div = document.getElementById("cartList");
     // var cat,name,price,desc,img,avail;
     db.collection("items").doc(doc).get().then(function (data) {
-        renderCartItem(data);
+        renderCartItem(data.data());
         cartItems.push(data.data());
         db.collection("carts").doc(auth.currentUser.uid).set({
             cart: cartItems
@@ -60,29 +60,41 @@ function clearCart() {
 
 
 function renderCartItem(data) {
+    console.log(data)
     var div = document.getElementById("cartList");
-    div.innerHTML += "<div class='lineItem'>  <li>" + data.data().name + "</li></div>"
+    div.innerHTML += "<div class='lineItem'>  <li>" + data.name + "</li></div>"
     curPrice = document.getElementById("Total").innerText;
     curPrice = parseFloat(curPrice);
-    curPrice += parseFloat(data.data().price);
+    curPrice += parseFloat(data.price);
     document.getElementById("Total").innerText = curPrice;
     document.getElementById("TotalCheckout").innerText = curPrice;
-    document.getElementById("checkoutCartList").innerHTML += "<div class='lineItem'>  <li>" + data.data().name;
+    document.getElementById("checkoutCartList").innerHTML += "<div class='lineItem'>  <li>" + data.name;
 }
 
 function loadCart() {
     //TODO: load cart from db
-    db.collection("carts").doc(auth.currentUser.uid).get().then(function (data) {
-        var cart = data.data().cart;
-        var div = document.getElementById("cartList");
-        var total = 0;
-        cart.forEach(function (item) {
-            renderCartItem(item);
+    getUidAsync().then((uid) => {
+        console.log(uid)
+        db.collection("carts").doc(uid).get().then(function (data) {
+            console.log(data.data())
+            var cart = data.data().cart;
+            console.log(cart)
+            cart.forEach(function (item) {
+                cartItems.push(item);
+                renderCartItem(item);
+            })
         })
-        document.getElementById("Total").innerText = total;
-        document.getElementById("TotalCheckout").innerText = total;
     })
+
 }
+
+async function getUidAsync() {
+    while (auth.currentUser == null) {
+        await new Promise(r => setTimeout(r, 500));
+    }
+    return auth.currentUser.uid;
+}
+loadCart();
 
 document.getElementById("CheckoutButtonCart").addEventListener('click', function () {
     document.getElementById("checkoutModal").classList.add('is-active');
