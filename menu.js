@@ -29,17 +29,86 @@ function renderMenu(doc) {
     div.innerHTML += "<div class='tile is-child box is-4'>  <p class='title'>" + name + "</p>  <p class='subtitle'>" + price + "</p>  <p class='subtitle'>" + desc + "</p>  <p class='subtitle'>" + cat + "</p>  <figure class='image is-4by3'>    <img src='" + img + "'>  </figure> <button class='button m-2 has-background-success' onClick=addToCart('" + doc.id + "')>Add to Cart</button></div>"
 }
 
+var cartItems = [];
+// auth.onAuthStateChanged(loadCart());
+
 function addToCart(doc) {
     var div = document.getElementById("cartList");
     // var cat,name,price,desc,img,avail;
     db.collection("items").doc(doc).get().then(function (data) {
-
-        div.innerHTML += "<div class='lineItem'>  <li>" + data.data().name + "<button class='delete has-background-danger'></li></div>"
-        curPrice = document.getElementById("Total").innerText;
-        curPrice = parseFloat(curPrice);
-        curPrice += parseFloat(data.data().price);
-        document.getElementById("Total").innerText = curPrice;
+        renderCartItem(data);
+        cartItems.push(data.data());
+        db.collection("carts").doc(auth.currentUser.uid).set({
+            cart: cartItems
+        })
     })
     // div.innerHTML += "<div class='tile is-child box is-4'>  <p class='title'>" + name + "</p>  <p class='subtitle'>" + price + "</p>  <p class='subtitle'>" + desc + "</p>  <p class='subtitle'>" + cat + "</p>  <figure class='image is-4by3'>    <img src='" + img + "'>  </figure> <button class='button m-2 has-background-success'>Add to Cart</button></div>"
 }
 
+function deleteFromCart(doc) {
+    //TODO: delete from cart
+}
+
+function renderCartItem(data) {
+    var div = document.getElementById("cartList");
+    div.innerHTML += "<div class='lineItem'>  <li>" + data.data().name + "<button class='delete has-background-danger'></li></div>"
+    curPrice = document.getElementById("Total").innerText;
+    curPrice = parseFloat(curPrice);
+    curPrice += parseFloat(data.data().price);
+    document.getElementById("Total").innerText = curPrice;
+    document.getElementById("TotalCheckout").innerText = curPrice;
+    document.getElementById("checkoutCartList").innerHTML += "<div class='lineItem'>  <li>" + data.data().name;
+}
+
+function loadCart() {
+    //TODO: load cart from db
+    db.collection("carts").doc(auth.currentUser.uid).get().then(function (data) {
+        var cart = data.data().cart;
+        var div = document.getElementById("cartList");
+        var total = 0;
+        cart.forEach(function (item) {
+            renderCartItem(item);
+        })
+        document.getElementById("Total").innerText = total;
+        document.getElementById("TotalCheckout").innerText = total;
+    })
+}
+
+document.getElementById("CheckoutButtonCart").addEventListener('click', function () {
+    document.getElementById("checkoutModal").classList.add('is-active');
+    if (!auth.currentUser) {
+        document.getElementById("checkoutModal").classList.remove('is-active');
+        document.getElementById("notifications").innerHTML += "<div class='notification is-danger'>Please login to checkout</div>"
+    }
+});
+
+document.getElementById("PlaceOrderBtn").addEventListener('click', function () {
+    console.log("Placing Order");
+    var name = document.getElementById("checkoutName").value;
+    var email = document.getElementById("checkoutEmail").value;
+    var phone = document.getElementById("checkoutPhone").value;
+    var specialNotes = document.getElementById("checkoutSpecialNotes").value;
+
+    if (name == "" || email == "" || phone == "") {
+        document.getElementById("notifications").innerHTML += "<div class='notification is-danger'>Please fill in all fields</div>"
+        return;
+    }
+
+    db.collection("orders").add({
+        name: name,
+        email: email,
+        phone: phone,
+        items: cartItems,
+        specialNotes: specialNotes
+
+    }).then(function (docRef) {
+        console.log("Document written with ID: ", docRef.id);
+        document.getElementById("notifications").innerHTML += "<div class='notification is-success'>Order Placed, Order Num: " + docRef.id + "</div>"
+        document.getElementById("checkoutModal").classList.remove('is-active');
+    });
+});
+
+document.getElementById("CancelOrderBtn").addEventListener('click', function () {
+    console.log("Order Cancelled");
+    document.getElementById("checkoutModal").classList.remove('is-active');
+});

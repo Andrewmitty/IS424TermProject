@@ -26,9 +26,7 @@
                 <a class="navbar-item has-text-linklight" href="menu.html">
                     <p class="title has-text-white">Menu</p>
                 </a>
-                <a class="navbar-item has-text-linklight" href="order.html">
-                    <p class="title has-text-white">Order</p>
-                </a>
+
                 <a class="navbar-item has-text-link-light" href="about.html">
                     <p class="title has-text-white">About Us</p>
                 </a>
@@ -45,6 +43,8 @@
                         <button class="button is-link" id="signin"> Log in</button>
 
                         <button class="button is-white has-text-primary" id="signup">Sign Up</button>
+
+                        <button class="button is-danger has-text-white is-hidden" id="signout">Sign Out</button>
                     </div>
                 </div>
             </div>
@@ -94,10 +94,36 @@
         let ref = firebase.storage().ref();
     </script>
     <!-- make sure to add your own js file as the last line in index.html file -->
-    <script src="menu.js"></script>
 
 
+    <div id="notifications">
+
+    </div>
     <div id="menuTileAncestor" class="tile is-ancestor is-vertical">
+        <div class="tile is-parent" id="tileCart">
+            <div class="tile is-child">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <h1 class="title">Cart</h1>
+                            <div id="cartItems">
+                                <ul class="menu-list" id="cartList">
+
+                                </ul>
+
+                            </div>
+                            <div id="cartTotal">
+                                <p>Total:</p>
+                                <p id="Total">0.00</p>
+                            </div>
+                            <div id="cartButtons">
+                                <button class="button" id="CheckoutButtonCart">Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="tile is-parent" id="tileParApps">
 
         </div>
@@ -117,30 +143,7 @@
 
         </div>
 
-        <div class="tile is-parent" id="tileCart">
-            <div class="tile is-child">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content">
-                            <h1 class="title">Cart</h1>
-                            <div id="cartItems">
-                                <ul class="menu-list" id="cartList">
 
-                                </ul>
-
-                            </div>
-                            <div id="cartTotal">
-                                <input type="text" class="input" name="orderNotes" id="orderNotes" placeholder="Special Instructions">
-                                <p id="Total">0.00</p>
-                            </div>
-                            <div id="cartButtons">
-                                <button class="button">Checkout</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 
@@ -166,5 +169,128 @@
             <p class=>Phone #: (407) 462-8729</p>
         </div>
     </div>
+</div>
+
+<div class="modal" id="signupModal">
+    <div class="modal-background">
+
+    </div>
+    <div class="modal-content">
+        <div class="box">
+            <form>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="signupEmail" class="input is-success" type="email" placeholder="Email" value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="signupPassword" class="input is-success" type="password" placeholder="Password"
+                            value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <button href="index.html" id="signupDone" type="button" class="button is-primary">Submit</button>
+
+
+        </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="signinModal">
+    <div class="modal-background">
+
+    </div>
+    <div class="modal-content">
+        <div class="box">
+            <form>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="signinEmail" class="input is-success" type="text" placeholder="Email" value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="signinPassword" class="input is-success" type="password" placeholder="Password"
+                            value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <button href="index.html" id="signinDone" type="button" class="button is-primary">Submit</button>
+
+
+        </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="checkoutModal">
+    <div class="modal-background">
+        <div class="modal-content">
+            <div class="box">
+                <form>
+                    <div id="userInfo">
+                        <input type="text" class="input m-2" id="checkoutName" placeholder="Name">
+                        <input type="text" class="input m-2" id="checkoutEmail" placeholder="Email">
+                        <input type="text" class="input m-2" id="checkoutPhone" placeholder="Phone#">
+                    </div>
+                    <div id="cartTotalCheckout">
+                        <input type="text" class="input m-2" name="orderNotes" id="checkoutSpecialNotes"
+                            placeholder="Special Instructions">
+                        <p>Total:</p>
+                        <p id="TotalCheckout">0.00</p>
+                    </div>
+
+                    <ul id="checkoutCartList">
+
+                    </ul>
+
+                    <div id="cartButtonsCheckout">
+                        <button class="button is-success" type="button" id="PlaceOrderBtn">Place Order</button>
+                        <button class="button is-danger" type="button" id="CancelOrderBtn">Cancel</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="menu.js"></script>
+<script src="app.js"></script>
 
 </html>
