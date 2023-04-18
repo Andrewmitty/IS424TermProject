@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sugar and Lime</title>
     <!-- //import bulma -->
-    <link rel="stylesheet" href="mybulma/css/mystyles.css">
+    <link rel="stylesheet" href="../mybulma/css/mystyles.css">
     <!-- link app.js -->
 
 </head>
@@ -28,7 +28,6 @@
             <a class="navbar-item has-text-linklight" href="menu.html">
                 <p class="title has-text-white">Menu</p>
             </a>
-
             <a class="navbar-item has-text-link-light" href="about.html">
                 <p class="title has-text-white">About Us</p>
             </a>
@@ -53,54 +52,128 @@
     </div>
 </div>
 
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+
+
+<script>
+    // TODO
+    // Copy **only** your firebaseConfig from Google Firebae and add it below
+    const firebaseConfig = {
+
+        apiKey: "AIzaSyCT7FOYz54Pn5pepf8X-L5DKnuLj0rgOj4",
+        authDomain: "sugar-and-lime.firebaseapp.com",
+        projectId: "sugar-and-lime",
+        storageBucket: "sugar-and-lime.appspot.com",
+        messagingSenderId: "1044901216614",
+        appId: "1:1044901216614:web:aa00c856d119ac6c88c8a7",
+        measurementId: "G-11NC990ZH7"
+
+    };
+    // Your web app's Firebase configuration 
+
+
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // define authentication variable
+    let auth = firebase.auth();
+    let db = firebase.firestore();
+
+    // define a storage reference
+    let ref = firebase.storage().ref();
+</script>
+
 <body>
+<div class="has-background-warning-light pl-4 pr-6">
+    <div>
+        <h1 class="has-text-info pt-5 pb-3">
+            If you have any questions or have interest in a special order that doesn't appear on the menu, call us at (407) 462-8729 or complete the form below!
+        </h1>
+</div>
 
-
-    <div class="hero is-small m-0">
-        <div class="hero-head">
-            <div class="container">
-                <!-- Need to change this once we get pictures from the client. -->
-                <div class="columns">
-                        <div class="columns is-mobile">
-                            <div class="columns">
-                            <div class="column">
-                                <img src="media/hp1.jpeg" style="border-radius:50%" width=384px height="512px">
-                             
-                            </div>
-                            <div class="column">
-                                <img src="media/hp2.jpeg" style="border-radius:50%" width=384px height="512px">
-                            </div>
-                            <div class="column">
-                                <img src="media/hp3.jpeg" style="border-radius:50%" width=384px height="512px">
-                            </div>
-                            </div>
-                        </div>
-                
-                </div>
-            </div>
+    <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Full Name">
         </div>
-    </div>
-
-
-    <div class="hero is-medium is-link m-0">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                    Sugar and Lime
-                </h1>
-                <p class="title">
-                    We are a small business that specializes in desserts and drinks. We are located in the heart of
-                    downtown
-                    San Jose. We are open from 10am to 10pm everyday. We are a family owned business and we are
-                    dedicated to
-                    providing the best service to our customers.
-                </p>
-            </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" type="email" placeholder="Email Address">
         </div>
-    </div>
-    </div>
+      </div>
 
+      <div class="field">
+        <label class="label">Phone Number</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Phone Number">
+        </div>
+      </div>
 
+      <div class="field">
+        <label class="label">Preferred Contact Method</label>
+        <div class="control">
+            <label class="radio">
+                <input type="radio">
+                Email
+              </label>
+              <label class="radio">
+                <input type="radio">
+                Phone
+              </label>
+        </div>
+      </div>
+      
+       
+      <div class="field">
+        <label class="label">Reason for Contact</label>
+        <div class="control">
+          <div class="select">
+            <select>
+              <option>Question</option>
+              <option>Order Request</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">Message</label>
+        <div class="control">
+          <textarea class="textarea" placeholder="Can I order a personalized birthday cake?"></textarea>
+        </div>
+      </div>
+      
+    
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Submit</button>
+        </div>
+        <div class="control">
+          <button class="button is-link is-light">Cancel</button>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="has-text-info pb-2">
+            A team member will respond to your submission promptly, thank you for completing the form!
+        </h1>
+</div>
+</div>
 
 </body>
 
@@ -130,7 +203,7 @@
 
     <div class="modal" id="signupModal">
         <div class="modal-background">
-
+    
         </div>
         <div class="modal-content">
             <div class="box">
@@ -146,7 +219,7 @@
                                 <i class="fas fa-check"></i>
                             </span>
                         </div>
-
+    
                     </div>
                     <div class="field">
                         <label class="label">Password</label>
@@ -160,21 +233,21 @@
                                 <i class="fas fa-check"></i>
                             </span>
                         </div>
-
+    
                     </div>
-
-
+    
+    
                     <button href="index.html" id="signupDone" type="button" class="button is-primary">Submit</button>
-
-
+    
+    
             </div>
             </form>
         </div>
     </div>
-
+    
     <div class="modal" id="signinModal">
         <div class="modal-background">
-
+    
         </div>
         <div class="modal-content">
             <div class="box">
@@ -190,7 +263,7 @@
                                 <i class="fas fa-check"></i>
                             </span>
                         </div>
-
+    
                     </div>
                     <div class="field">
                         <label class="label">Password</label>
@@ -204,13 +277,13 @@
                                 <i class="fas fa-check"></i>
                             </span>
                         </div>
-
+    
                     </div>
-
-
+    
+    
                     <button href="index.html" id="signinDone" type="button" class="button is-primary">Submit</button>
-
-
+    
+    
             </div>
             </form>
         </div>
