@@ -40,6 +40,6 @@ function addToCart(doc) {
         curPrice += parseFloat(data.data().price);
         document.getElementById("Total").innerText = curPrice;
     })
-
     // div.innerHTML += "<div class='tile is-child box is-4'>  <p class='title'>" + name + "</p>  <p class='subtitle'>" + price + "</p>  <p class='subtitle'>" + desc + "</p>  <p class='subtitle'>" + cat + "</p>  <figure class='image is-4by3'>    <img src='" + img + "'>  </figure> <button class='button m-2 has-background-success'>Add to Cart</button></div>"
 }
+

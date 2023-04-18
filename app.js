@@ -17,3 +17,4 @@ document.getElementById('signin').addEventListener('click', function () {
 document.getElementById('signinDone').addEventListener('click', function () {
     document.getElementById('signinModal').classList.remove('is-active');
 });
+
