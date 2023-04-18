@@ -128,6 +128,7 @@ document.getElementById("PlaceOrderBtn").addEventListener('click', function () {
         document.getElementById("notifications").innerHTML += "<div class='notification is-success'>Order Placed, Order Num: " + docRef.id + "</div>"
         document.getElementById("checkoutModal").classList.remove('is-active');
     });
+    clearCart();
 });
 
 document.getElementById("CancelOrderBtn").addEventListener('click', function () {
