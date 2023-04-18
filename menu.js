@@ -45,13 +45,23 @@ function addToCart(doc) {
     // div.innerHTML += "<div class='tile is-child box is-4'>  <p class='title'>" + name + "</p>  <p class='subtitle'>" + price + "</p>  <p class='subtitle'>" + desc + "</p>  <p class='subtitle'>" + cat + "</p>  <figure class='image is-4by3'>    <img src='" + img + "'>  </figure> <button class='button m-2 has-background-success'>Add to Cart</button></div>"
 }
 
-function deleteFromCart(doc) {
+function clearCart() {
     //TODO: delete from cart
+    var div = document.getElementById("cartList");
+    div.innerHTML = "";
+    document.getElementById("Total").innerText = 0;
+    document.getElementById("TotalCheckout").innerText = 0.00;
+    document.getElementById("checkoutCartList").innerHTML = "";
+    cartItems = [];
+    db.collection("carts").doc(auth.currentUser.uid).set({
+        cart: cartItems
+    })
 }
+
 
 function renderCartItem(data) {
     var div = document.getElementById("cartList");
-    div.innerHTML += "<div class='lineItem'>  <li>" + data.data().name + "<button class='delete has-background-danger'></li></div>"
+    div.innerHTML += "<div class='lineItem'>  <li>" + data.data().name + "</li></div>"
     curPrice = document.getElementById("Total").innerText;
     curPrice = parseFloat(curPrice);
     curPrice += parseFloat(data.data().price);
