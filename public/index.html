@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugar and Lime</title>
+    <!-- //import bulma -->
+    <link rel="stylesheet" href="mybulma/css/mystyles.css">
+    <!-- link app.js -->
+
+</head>
+
+<div class="navbar is-primary is-spaced mb-0">
+    <div class="navbar-brand">
+        <!-- #put logo in here -->
+        <a href="index.html" class="mr-5">
+            <img src="media/MicrosoftTeams-image.png" alt="" width="100" height="100">
+        </a>
+
+    </div>
+    <div class="navbar-menu has-text-link">
+        <div class="navbar-start">
+            <a class="navbar-item has-text-link-light" href="index.html">
+                <p class="title has-text-white">Home</p>
+            </a>
+            <a class="navbar-item has-text-linklight" href="menu.html">
+                <p class="title has-text-white">Menu</p>
+            </a>
+
+            <a class="navbar-item has-text-link-light" href="about.html">
+                <p class="title has-text-white">About Us</p>
+            </a>
+            <a class="navbar-item has-text-link-light" href="contact.html">
+                <p class="title has-text-white">Contact</p>
+            </a>
+            <a href="location.html" class="navbar-item has-text-link-light">
+                <p class="title has-text-white">Location</p>
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <button class="button is-link" id="signin"> Log in</button>
+
+                    <button class="button is-white has-text-primary" id="signup">Sign Up</button>
+
+                    <button class="button is-danger has-text-white is-hidden" id="signout">Sign Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<body>
+
+
+    <div class="hero is-small m-0">
+        <div class="hero-head">
+            <div class="container">
+                <!-- Need to change this once we get pictures from the client. -->
+                <img class="image is-full" src="media/1600w-qt_TMRJF4m0.webp" alt="">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="hero is-medium is-link m-0">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Sugar and Lime
+                </h1>
+                <p class="title">
+                    We are a small business that specializes in desserts and drinks. We are located in the heart of
+                    downtown
+                    San Jose. We are open from 10am to 10pm everyday. We are a family owned business and we are
+                    dedicated to
+                    providing the best service to our customers.
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+</body>
+
+<div class="footer has-background-info">
+    <div class="level">
+        <div class="level-item">
+            <a href="index.html" class="has-text-white">Home</a>
+        </div>
+        <div class="level-item">
+            <a href="https://www.facebook.com/infosugarandlime" class="has-text-white">Facebook</a>
+        </div>
+        <div class="level-item">
+            <a href="https://instagram.com/sugar_and_lime_" class="has-text-white">Instagram</a>
+        </div>
+        <div class="level-item has-text-link-dark">
+            <p class="is-text has-text-white">Houston Texas</p>
+        </div>
+        <div class="level-item has-text-white">
+            <p>Email: sugarandlime7420@gmail.com</p>
+        </div>
+        <div class="level-item has-text-white">
+            <p class=>Phone #: (407) 462-8729</p>
+        </div>
+    </div>
+
+
+
+    <div class="modal" id="signupModal">
+        <div class="modal-background">
+
+        </div>
+        <div class="modal-content">
+            <div class="box">
+                <form>
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="signupEmail" class="input is-success" type="email" placeholder="Email" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="signupPassword" class="input is-success" type="password" placeholder="Password"
+                                value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <button href="index.html" id="signupDone" type="button" class="button is-primary">Submit</button>
+
+
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="signinModal">
+        <div class="modal-background">
+
+        </div>
+        <div class="modal-content">
+            <div class="box">
+                <form>
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="signinEmail" class="input is-success" type="text" placeholder="Email" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="signinPassword" class="input is-success" type="password" placeholder="Password"
+                                value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <button href="index.html" id="signinDone" type="button" class="button is-primary">Submit</button>
+
+
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="app.js"></script>
+
+</html>
