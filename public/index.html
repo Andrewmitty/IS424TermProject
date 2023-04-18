@@ -12,6 +12,8 @@
 
 </head>
 
+
+
 <div class="navbar is-primary is-spaced mb-0">
     <div class="navbar-brand">
         <!-- #put logo in here -->
@@ -52,8 +54,51 @@
         </div>
     </div>
 </div>
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+
+
+<script>
+    // TODO
+    // Copy **only** your firebaseConfig from Google Firebae and add it below
+    const firebaseConfig = {
+
+        apiKey: "AIzaSyCT7FOYz54Pn5pepf8X-L5DKnuLj0rgOj4",
+        authDomain: "sugar-and-lime.firebaseapp.com",
+        projectId: "sugar-and-lime",
+        storageBucket: "sugar-and-lime.appspot.com",
+        messagingSenderId: "1044901216614",
+        appId: "1:1044901216614:web:aa00c856d119ac6c88c8a7",
+        measurementId: "G-11NC990ZH7"
+
+    };
+    // Your web app's Firebase configuration 
+
+
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // define authentication variable
+    let auth = firebase.auth();
+    let db = firebase.firestore();
+
+    // define a storage reference
+    let ref = firebase.storage().ref();
+</script>
 
 <body>
+    <div id="notifications">
+
+    </div>
 
 
     <div class="hero is-small m-0">
