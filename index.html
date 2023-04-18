@@ -28,9 +28,7 @@
             <a class="navbar-item has-text-linklight" href="menu.html">
                 <p class="title has-text-white">Menu</p>
             </a>
-            <a class="navbar-item has-text-linklight" href="order.html">
-                <p class="title has-text-white">Order</p>
-            </a>
+
             <a class="navbar-item has-text-link-light" href="about.html">
                 <p class="title has-text-white">About Us</p>
             </a>
@@ -47,6 +45,8 @@
                     <button class="button is-link" id="signin"> Log in</button>
 
                     <button class="button is-white has-text-primary" id="signup">Sign Up</button>
+
+                    <button class="button is-danger has-text-white is-hidden" id="signout">Sign Out</button>
                 </div>
             </div>
         </div>
@@ -120,9 +120,9 @@
             <div class="box">
                 <form>
                     <div class="field">
-                        <label class="label">Username</label>
+                        <label class="label">Email</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input is-success" type="text" placeholder="Text input" value="">
+                            <input id="signupEmail" class="input is-success" type="email" placeholder="Email" value="">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -135,7 +135,8 @@
                     <div class="field">
                         <label class="label">Password</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input is-success" type="text" placeholder="Text input" value="">
+                            <input id="signupPassword" class="input is-success" type="password" placeholder="Password"
+                                value="">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -147,7 +148,7 @@
                     </div>
 
 
-                    <button href="index.html" id="signupDone" class="button is-primary">Submit</button>
+                    <button href="index.html" id="signupDone" type="button" class="button is-primary">Submit</button>
 
 
             </div>
@@ -163,9 +164,9 @@
             <div class="box">
                 <form>
                     <div class="field">
-                        <label class="label">Username</label>
+                        <label class="label">Email</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input is-success" type="text" placeholder="Text input" value="">
+                            <input id="signinEmail" class="input is-success" type="text" placeholder="Email" value="">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -178,7 +179,8 @@
                     <div class="field">
                         <label class="label">Password</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input is-success" type="text" placeholder="Text input" value="">
+                            <input id="signinPassword" class="input is-success" type="password" placeholder="Password"
+                                value="">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -190,7 +192,7 @@
                     </div>
 
 
-                    <button href="index.html" id="signinDone" class="button is-primary">Submit</button>
+                    <button href="index.html" id="signinDone" type="button" class="button is-primary">Submit</button>
 
 
             </div>
