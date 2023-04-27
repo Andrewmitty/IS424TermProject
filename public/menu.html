@@ -1,0 +1,296 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugar and Lime Menu</title>
+    <link rel="stylesheet" href="mybulma/css/mystyles.css">
+</head>
+
+<body>
+
+    <div class="navbar is-primary is-spaced mb-0">
+        <div class="navbar-brand">
+            <!-- #put logo in here -->
+            <a href="index.html" class="mr-5">
+                <img src="media/MicrosoftTeams-image.png" alt="" width="100" height="100">
+            </a>
+
+        </div>
+        <div class="navbar-menu has-text-link">
+            <div class="navbar-start">
+                <a class="navbar-item has-text-link-light" href="index.html">
+                    <p class="title has-text-white">Home</p>
+                </a>
+                <a class="navbar-item has-text-linklight" href="menu.html">
+                    <p class="title has-text-white">Menu</p>
+                </a>
+
+                <a class="navbar-item has-text-link-light" href="about.html">
+                    <p class="title has-text-white">About Us</p>
+                </a>
+                <a class="navbar-item has-text-link-light" href="contact.html">
+                    <p class="title has-text-white">Contact</p>
+                </a>
+                <a href="location.html" class="navbar-item has-text-link-light">
+                    <p class="title has-text-white">Location</p>
+                </a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <button class="button is-link" id="signin"> Log in</button>
+
+                        <button class="button is-white has-text-primary" id="signup">Sign Up</button>
+
+                        <button class="button is-danger has-text-white is-hidden" id="signout">Sign Out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+
+
+    <script>
+        // TODO
+        // Copy **only** your firebaseConfig from Google Firebae and add it below
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyCT7FOYz54Pn5pepf8X-L5DKnuLj0rgOj4",
+            authDomain: "sugar-and-lime.firebaseapp.com",
+            projectId: "sugar-and-lime",
+            storageBucket: "sugar-and-lime.appspot.com",
+            messagingSenderId: "1044901216614",
+            appId: "1:1044901216614:web:aa00c856d119ac6c88c8a7",
+            measurementId: "G-11NC990ZH7"
+
+        };
+        // Your web app's Firebase configuration 
+
+
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        // define authentication variable
+        let auth = firebase.auth();
+        let db = firebase.firestore();
+
+        // define a storage reference
+        let ref = firebase.storage().ref();
+    </script>
+    <!-- make sure to add your own js file as the last line in index.html file -->
+
+
+    <div id="notifications">
+
+    </div>
+    <div id="menuTileAncestor" class="tile is-ancestor is-vertical">
+        <div class="tile is-parent" id="tileCart">
+            <div class="tile is-child">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <h1 class="title">Cart</h1>
+                            <div id="cartItems">
+                                <ul class="menu-list" id="cartList">
+
+                                </ul>
+
+                            </div>
+                            <div id="cartTotal">
+                                <p>Total:</p>
+                                <p id="Total">0.00</p>
+                            </div>
+                            <div id="cartButtons">
+                                <button class="button is-success" id="CheckoutButtonCart">Checkout</button>
+                                <button class="button is-danger" id="ClearCartButton" onClick="clearCart()">Clear
+                                    Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tile is-parent" id="tileParApps">
+
+        </div>
+        <div class="tile is-parent" id="tileParMain">
+
+        </div>
+        <div class="tile is-parent" id="tileParDesserts">
+
+        </div>
+        <div class="tile is-parent" id="tileParCakes">
+
+        </div>
+        <div class="tile is-parent" id="tileParCupcakes">
+
+        </div>
+        <div class="tile is-parent" id="tileParDrinks">
+
+        </div>
+
+
+    </div>
+
+
+</body>
+<div class="footer has-background-info">
+    <div class="level">
+        <div class="level-item">
+            <a href="index.html" class="has-text-white">Home</a>
+        </div>
+        <div class="level-item">
+            <a href="https://www.facebook.com/infosugarandlime" class="has-text-white">Facebook</a>
+        </div>
+        <div class="level-item">
+            <a href="https://instagram.com/sugar_and_lime_" class="has-text-white">Instagram</a>
+        </div>
+        <div class="level-item has-text-link-dark">
+            <p class="is-text has-text-white">Houston Texas</p>
+        </div>
+        <div class="level-item has-text-white">
+            <p>Email: f_74sal@hotmail.com</p>
+        </div>
+        <div class="level-item has-text-white">
+            <p class=>Phone #: (407) 462-8729</p>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="signupModal">
+    <div class="modal-background">
+
+    </div>
+    <div class="modal-content">
+        <div class="box">
+            <form>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="signupEmail" class="input is-success" type="email" placeholder="Email" value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="signupPassword" class="input is-success" type="password" placeholder="Password"
+                            value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <button href="index.html" id="signupDone" type="button" class="button is-primary">Submit</button>
+
+
+        </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="signinModal">
+    <div class="modal-background">
+
+    </div>
+    <div class="modal-content">
+        <div class="box">
+            <form>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="signinEmail" class="input is-success" type="text" placeholder="Email" value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="signinPassword" class="input is-success" type="password" placeholder="Password"
+                            value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <button href="index.html" id="signinDone" type="button" class="button is-primary">Submit</button>
+
+
+        </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="checkoutModal">
+    <div class="modal-background">
+        <div class="modal-content">
+            <div class="box">
+                <form>
+                    <div id="userInfo">
+                        <input type="text" class="input m-2" id="checkoutName" placeholder="Name">
+                        <input type="text" class="input m-2" id="checkoutEmail" placeholder="Email">
+                        <input type="text" class="input m-2" id="checkoutPhone" placeholder="Phone#">
+                    </div>
+                    <div id="cartTotalCheckout">
+                        <input type="text" class="input m-2" name="orderNotes" id="checkoutSpecialNotes"
+                            placeholder="Special Instructions">
+                        <p>Total:</p>
+                        <p id="TotalCheckout">0.00</p>
+                    </div>
+
+                    <ul id="checkoutCartList">
+
+                    </ul>
+
+                    <div id="cartButtonsCheckout">
+                        <button class="button is-success" type="button" id="PlaceOrderBtn">Place Order</button>
+                        <button class="button is-danger" type="button" id="CancelOrderBtn">Cancel</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="menu.js"></script>
+<script src="app.js"></script>
