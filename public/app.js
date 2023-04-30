@@ -89,11 +89,13 @@ auth.onAuthStateChanged(function (user) {
         document.getElementById('signin').classList.add('is-hidden');
         document.getElementById('signup').classList.add('is-hidden');
         document.getElementById('signout').classList.remove('is-hidden');
+
     } else {
         // No user is signed in.
         document.getElementById('signin').classList.remove('is-hidden');
         document.getElementById('signup').classList.remove('is-hidden');
         document.getElementById('signout').classList.add('is-hidden');
+
     }
 })
 
@@ -105,3 +107,27 @@ document.getElementById('cancelSignIn').addEventListener('click', function () {
     document.getElementById('signinModal').classList.remove('is-active');
 });
 
+async function getUidAsync() {
+    while (auth.currentUser == null) {
+        await new Promise(r => setTimeout(r, 500));
+    }
+    return auth.currentUser.uid;
+}
+
+function enableAdminMode() {
+    document.getElementById('adminLink').classList.remove('is-hidden');
+}
+
+getUidAsync().then(function (uid) {
+    db.collection("users").doc(uid).get().then(function (data) {
+        if (data.data().admin == true) {
+            document.getElementById('notifications').innerHTML += "<div class='notification is-warning'>Admin Mode Enabled</div>"
+            setTimeout(function () {
+                document.getElementById('notifications').innerHTML = ""
+            }, 3000)
+            enableAdminMode();
+        } else {
+
+        }
+    })
+});

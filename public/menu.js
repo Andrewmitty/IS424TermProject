@@ -37,10 +37,6 @@ auth.onAuthStateChanged(function (user) {
             db.collection("users").doc(uid).get().then(function (data) {
                 if (data.data().admin == true) {
                     enableAdminMenu();
-                    document.getElementById('notifications').innerHTML += "<div class='notification is-warning'>Admin Mode Enabled</div>"
-                    setTimeout(function () {
-                        document.getElementById('notifications').innerHTML = ""
-                    }, 3000)
                 } else {}
             })
         });
@@ -122,7 +118,7 @@ function loadCart() {
 }
 
 // db.collection("items").add({
-    
+
 //         "available": true,
 //         "category": "Appetizers",
 //         "description": "TODO",
@@ -130,7 +126,7 @@ function loadCart() {
 //         "name": "Fruit Tart",
 //         "options": [],
 //         "price": 4.99
-    
+
 // })
 
 
@@ -167,6 +163,8 @@ document.getElementById("PlaceOrderBtn").addEventListener('click', function () {
     var email = document.getElementById("checkoutEmail").value;
     var phone = document.getElementById("checkoutPhone").value;
     var specialNotes = document.getElementById("checkoutSpecialNotes").value;
+    var time = new Date().toString();
+    
 
     if (name == "" || email == "" || phone == "") {
         document.getElementById("notifications").innerHTML += "<div class='notification is-danger'>Please fill in all fields</div>"
@@ -178,7 +176,8 @@ document.getElementById("PlaceOrderBtn").addEventListener('click', function () {
         email: email,
         phone: phone,
         items: cartItems,
-        specialNotes: specialNotes
+        specialNotes: specialNotes,
+        time: time
 
     }).then(function (docRef) {
         console.log("Document written with ID: ", docRef.id);
