@@ -72,7 +72,7 @@ function renderCartItem(data) {
 }
 
 function loadCart() {
-    //TODO: load cart from db
+    console.log("Loading Cart");
     getUidAsync().then((uid) => {
         console.log(uid)
         db.collection("carts").doc(uid).get().then(function (data) {

@@ -1,4 +1,5 @@
 //add event listener to the button signupDone and remove the is-active class from the modal
+var provider = new firebase.auth.GoogleAuthProvider();
 document.getElementById("signupDone").addEventListener('click', function () {
     document.getElementById('signupModal').classList.remove('is-active');
     var email = document.getElementById('signupEmail').value;
@@ -74,7 +75,10 @@ function signOut() {
         }, 3000)
     });
 }
-
+document.getElementById('GoogleLogin').addEventListener('click', function () {
+    console.log("clicked")
+    auth.signInWithRedirect(provider);
+});
 auth.onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
