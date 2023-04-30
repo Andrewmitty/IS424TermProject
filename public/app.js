@@ -96,3 +96,12 @@ auth.onAuthStateChanged(function (user) {
         document.getElementById('signout').classList.add('is-hidden');
     }
 })
+
+document.getElementById('cancelSignUp').addEventListener('click', function () {
+    document.getElementById('signupModal').classList.remove('is-active');
+});
+
+document.getElementById('cancelSignIn').addEventListener('click', function () {
+    document.getElementById('signinModal').classList.remove('is-active');
+});
+

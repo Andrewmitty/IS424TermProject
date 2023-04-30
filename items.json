@@ -4,13 +4,7 @@
         "description": "TODO",
         "image": "https://firebasestorage.googleapis.com/v0/b/sugar-and-lime.appspot.com/o/Appetizers%2FArabic%20Salad.jpeg?alt=media&token=51388ca8-9771-4d2c-a4f3-8d5499009c2d",
         "name": "Arabic Salad",
-        "options": [
-            "No Green Onions",
-            "No Tomatoes",
-            "No Cucumbers",
-            "No Olives",
-            "Dressing on Side"
-        ],
+        "options": [],
         "price": 4.99
     },
     {
