@@ -104,7 +104,8 @@
 
     <div class="columns">
         <div class="column is-one-quarter" id="ordersColumn">
-            <p class="title m-3">Orders</p> <button class="button is-link m-3" type="button" id="allOrdersBtn">View All
+            <p class="title m-3">Current Orders</p> <button class="button is-link m-3" type="button" onClick="loadAllOrders()"
+                type="button" id="allOrdersBtn">View All
                 Orders</button>
         </div>
         <div class="column is-one-quarter" id="contactColumn">
@@ -116,7 +117,11 @@
         </div>
         <div class="column is-one-quarter" id="itemsColumn">
             <p class="title m-3">Items</p>
+            <button id="addItemBtn" class="button is-link m-3" type="button"
+                onClick="document.getElementById('addItemModal').classList.add('is-active')" type="button">Add an
+                Item</button>
         </div>
+
     </div>
 
 
@@ -252,50 +257,65 @@
     </div>
     <div class="modal-content">
         <div class="box">
-            <button type="button" class="button is-danger ml-0 m-2" id="cancelAdd">Cancel</button>
-
+            <button type="button" type='button' class="button is-danger ml-0 m-2" id="cancelAdd">Cancel</button>
+            <p class="title">Add an Item</p>
             <form>
                 <div class="field">
-                    <label class="label">Email</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="signinEmail" class="input is-success" type="text" placeholder="Email" value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+                    <label for="" class="label">Name</label>
+                    <div class="control">
+                        <input type="text" class="input" id="itemName" placeholder="Item Name">
                     </div>
-
                 </div>
+
                 <div class="field">
-                    <label class="label">Password</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="signinPassword" class="input is-success" type="password" placeholder="Password"
-                            value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+                    <label class="label">Category</label>
+                    <div class="control">
+                        <div class="select">
+                            <select id="itemCat">
+                                <option value="Not Selected">Select an option</option>
+                                <option value="Mains">Mains</option>
+                                <option value="Beverages">Beverages</option>
+                                <option value="Appetizers">Appetizers</option>
+                                <option value="Cakes">Cakes</option>
+                                <option value="Dessert">Dessert</option>
+                                <option value="Cupcakes">Cupcakes</option>
+                            </select>
+                        </div>
                     </div>
-
                 </div>
 
-                <button class="button" type="button" id="GoogleLogin">
-                    <span class="icon">
-                        <i class="fa-brands fa-google"></i>
-                    </span>
-                    <span>Continue With Google</span>
-                </button>
-                <button href="index.html" id="signinDone" type="button" class="button is-primary">Submit</button>
+                <div class="field">
+                    <label class="label">Price</label>
+                    <div class="control">
+                        <input class="input" id="itemPrice" type="text" placeholder="Price **No Dollar Sign**">
+                    </div>
+                </div>
+                <label for="" class="label">Item Image</label>
+                <div class="file">
 
+                    <label class="file-label">
+                        <input class="file-input" type="file" id="itemImage" name="itemImage">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                Item Image
+                            </span>
+                        </span>
+                    </label>
+                </div>
 
+                <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Item Description" id="itemDesc"></textarea>
+                    </div>
+                </div>
+                <button class="button is-success" type="button" id="submitItem">Add Item</button>
+            </form>
         </div>
-        </form>
     </div>
-</div>
 
 
 

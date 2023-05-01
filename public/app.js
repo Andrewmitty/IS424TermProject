@@ -100,8 +100,8 @@ document.getElementById('GoogleLogin').addEventListener('click', function () {
 auth.onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
-        email=user.email;
-        db.collection('users').doc(user.uid).set({
+        email = user.email;
+        db.collection('users').doc(user.uid).update({
             email: email
         });
         document.getElementById('notifications').innerHTML += "<div class='notification is-success'>Signed In</div>"
@@ -141,9 +141,12 @@ function enableAdminMode() {
 }
 
 getUidAsync().then(function (uid) {
+    console.log(uid)
     db.collection("users").doc(uid).get().then(function (data) {
+        console.log(data.data())
         if (data.data().admin) {
             if (data.data().admin == true) {
+                console.log("admin mode enabled")
                 document.getElementById('notifications').innerHTML += "<div class='notification is-warning'>Admin Mode Enabled</div>"
                 setTimeout(function () {
                     document.getElementById('notifications').innerHTML = ""

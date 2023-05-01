@@ -1,17 +1,19 @@
-db.collection("orders").where('status','!=','complete').get().then(function (data) {
+db.collection("orders").where('status', '!=', 'complete').get().then(function (data) {
     data.forEach(function (doc) {
         renderOrder(doc);
     })
 });
 
-document.getElementById('allOrdersBtn').addEventListener('click', function () {
-    document.getElementById('ordersColumn').innerHTML = "";
+
+function loadAllOrders() {
+    document.getElementById('ordersColumn').innerHTML = "<p class='title'>All Orders</p>";
+
     db.collection("orders").get().then(function (data) {
         data.forEach(function (doc) {
             renderOrder(doc);
         })
     });
-});
+};
 
 function renderOrder(data) {
     var div = document.getElementById("ordersColumn");
@@ -42,7 +44,7 @@ db.collection('contact').get().then(function (data) {
 });
 
 document.getElementById('cancelAdd').addEventListener('click', function () {
-    document.getElementById('addItemModal').classList.add("is-hidden");
+    document.getElementById('addItemModal').classList.remove("is-active");
 });
 
 function renderContactFormResponse(doc) {
@@ -57,7 +59,7 @@ function renderContactFormResponse(doc) {
         <p class='subtitle'>Message: " + doc.data().message + "</p>\
         <button class='button is-danger' onclick='deleteContact(\"" + doc.id + "\")'>Delete</button>\
         </div>"
-}
+};
 
 function completeOrder(id) {
     db.collection('orders').doc(id).update({
@@ -65,7 +67,7 @@ function completeOrder(id) {
     }).then(function () {
         location.reload();
     })
-}
+};
 
 function deleteContact(id) {
     db.collection('contact').doc(id).delete().then(function () {
@@ -87,12 +89,17 @@ function renderUser(doc) {
         <p class='subtitle'>Admin: " + doc.data().admin + "</p>\
         <button class='button is-danger' onclick='makeAdmin(\"" + doc.id + "\")'>Make Admin</button>\
         </div>"
-}
+};
 
 db.collection('items').get().then(function (data) {
     data.forEach(function (doc) {
         renderItem(doc);
     })
+});
+
+document.getElementById('addItemBtn').addEventListener('click', function () {
+    console.log("Clicked");
+
 });
 
 function renderItem(doc) {
@@ -105,15 +112,15 @@ function renderItem(doc) {
         <p class='subtitle'>Category: " + doc.data().category + "</p>\
         <button class='button is-danger' onclick='deleteItem(\"" + doc.id + "\")'>Delete</button>\
         </div>"
-}
+};
 
-function makeAdmin(uid){
+function makeAdmin(uid) {
     db.collection('users').doc(uid).update({
         admin: true
-    }).then(function(){
+    }).then(function () {
         location.reload();
     })
-}
+};
 
 function deleteItem(ID) {
     console.log("Deleting Item");
@@ -125,3 +132,69 @@ function deleteItem(ID) {
         console.error("Error removing document: ", error);
     });
 };
+
+document.getElementById('submitItem').addEventListener('click', function () {
+    //first need to upload image to storage. Then get the url and create a new item with that url and other info from the form
+    var fileName = document.getElementById('itemImage').files[0].name;
+    var file = document.getElementById('itemImage').files[0];
+    var category = document.getElementById('itemCat').value;
+    var storageRef = firebase.storage().ref(category + '/' + fileName);
+    var uploadTask = storageRef.put(file);
+    document.getElementById('submitItem').classList.add('is-loading')
+    uploadTask.on('state_changed',
+        (snapshot) => {
+            // Observe state change events such as progress, pause, and resume
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+            switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                    console.log('Upload is paused');
+                    break;
+                case firebase.storage.TaskState.RUNNING: // or 'running'
+                    console.log('Upload is running');
+                    break;
+            }
+        },
+        (error) => {
+            document.getElementById('addItemModal').classList.remove("is-active");
+            document.getElementById('notifications').innerHTML += "<div class='notification is-danger'>\
+    <p class='title'>There was an error uploading the image. Please try again and make sure it is the right file.</p>\
+    </div>"
+            setTimeout(function () {
+                document.getElementById('notifications').innerHTML = ""
+            }, 3000)
+        },
+        () => {
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+            uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                    console.log('File available at', downloadURL);
+
+                    var name = document.getElementById('itemName').value;
+                    var description = document.getElementById('itemDesc').value;
+                    var price = document.getElementById('itemPrice').value;
+                    var image = downloadURL;
+                    db.collection('items').add({
+                        name: name,
+                        description: description,
+                        price: price,
+                        image: image,
+                        category: category
+                    }).then(function () {
+                        document.getElementById('addItemModal').classList.remove("is-active");
+                        document.getElementById('notifications').innerHTML += "<div class='notification is-success'>\
+        <p class='title'>Item Added Successfully!</p>\
+        </div>"
+                        setTimeout(function () {
+                            document.getElementById('notifications').innerHTML = ""
+                        }, 3000)
+                    });
+
+                }
+
+            );
+        });
+
+
+});
