@@ -112,33 +112,33 @@
         <div class="field">
             <label class="label">Name</label>
             <div class="control">
-                <input class="input" type="text" placeholder="Full Name">
+                <input class="input" id="contactName" type="text" placeholder="Full Name">
             </div>
         </div>
 
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
-                <input class="input" type="email" placeholder="Email Address">
+                <input class="input" id="contactEmail" type="email" placeholder="Email Address">
             </div>
         </div>
 
         <div class="field">
             <label class="label">Phone Number</label>
             <div class="control">
-                <input class="input" type="text" placeholder="Phone Number">
+                <input class="input" id="contactPhone" type="text" placeholder="Phone Number">
             </div>
         </div>
 
         <div class="field">
             <label class="label">Preferred Contact Method</label>
-            <div class="control">
+            <div class="control" id="contactPrefMethod">
                 <label class="radio">
-                    <input type="radio">
+                    <input name="prefContact" type="radio" value="Email">
                     Email
                 </label>
                 <label class="radio">
-                    <input type="radio">
+                    <input name="prefContact" type="radio" value="Phone">
                     Phone
                 </label>
             </div>
@@ -149,10 +149,10 @@
             <label class="label">Reason for Contact</label>
             <div class="control">
                 <div class="select">
-                    <select>
-                        <option>Question</option>
-                        <option>Order Request</option>
-                        <option>Other</option>
+                    <select id="contactReason">
+                        <option value="Question">Question</option>
+                        <option value="Order Request">Order Request</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
             </div>
@@ -161,7 +161,8 @@
         <div class="field">
             <label class="label">Message</label>
             <div class="control">
-                <textarea class="textarea" placeholder="Can I order a personalized birthday cake?"></textarea>
+                <textarea id="contactText" class="textarea"
+                    placeholder="Can I order a personalized birthday cake?"></textarea>
             </div>
         </div>
 
@@ -169,10 +170,7 @@
 
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-link">Submit</button>
-            </div>
-            <div class="control">
-                <button class="button is-link is-light">Cancel</button>
+                <button type="button" id="contactSubmit" class="button is-link">Submit</button>
             </div>
         </div>
 
@@ -205,110 +203,111 @@
             <p>(407) 462-8729</p>
         </div>
     </div>
+</div>
 
 
+<div class="modal" id="signupModal">
+    <div class="modal-background">
 
-    <div class="modal" id="signupModal">
-        <div class="modal-background">
-
-        </div>
-        <div class="modal-content">
-            <div class="box">
-                <button type="button" class="button is-danger ml-0 m-2" id="cancelSignUp">Cancel</button>
-                <form>
-                    <div class="field">
-                        <label class="label">Email</label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input id="signupEmail" class="input is-success" type="email" placeholder="Email" value="">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        </div>
-
-                    </div>
-                    <div class="field">
-                        <label class="label">Password</label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input id="signupPassword" class="input is-success" type="password" placeholder="Password"
-                                value="">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        </div>
-
-                    </div>
-
-                    <button class="button" type="button" id="GoogleSignUp">
-                        <span class="icon">
-                            <i class="fa-brands fa-google"></i>
-                        </span>
-                        <span>Continue With Google</span>
-                    </button>
-                    <button href="index.html" id="signupDone" type="button" class="button is-primary">Submit</button>
-
-
-            </div>
-            </form>
-        </div>
     </div>
-
-    <div class="modal" id="signinModal">
-        <div class="modal-background">
-
-        </div>
-        <div class="modal-content">
-            <div class="box">
-                <button type="button" class="button is-danger ml-0 m-2" id="cancelSignIn">Cancel</button>
-
-                <form>
-                    <div class="field">
-                        <label class="label">Email</label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input id="signinEmail" class="input is-success" type="text" placeholder="Email" value="">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        </div>
-
-                    </div>
-                    <div class="field">
-                        <label class="label">Password</label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input id="signinPassword" class="input is-success" type="password" placeholder="Password"
-                                value="">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        </div>
-
-                    </div>
-
-                    <button class="button" type="button" id="GoogleLogin">
-                        <span class="icon">
-                            <i class="fa-brands fa-google"></i>
+    <div class="modal-content">
+        <div class="box">
+            <button type="button" class="button is-danger ml-0 m-2" id="cancelSignUp">Cancel</button>
+            <form>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="signupEmail" class="input is-success" type="email" placeholder="Email" value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
                         </span>
-                        <span>Continue With Google</span>
-                    </button>
-                    <button href="index.html" id="signinDone" type="button" class="button is-primary">Submit</button>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="signupPassword" class="input is-success" type="password" placeholder="Password"
+                            value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+
+                <button class="button" type="button" id="GoogleSignUp">
+                    <span class="icon">
+                        <i class="fa-brands fa-google"></i>
+                    </span>
+                    <span>Continue With Google</span>
+                </button>
+                <button href="index.html" id="signupDone" type="button" class="button is-primary">Submit</button>
 
 
-            </div>
-            </form>
         </div>
+        </form>
     </div>
 </div>
+
+<div class="modal" id="signinModal">
+    <div class="modal-background">
+
+    </div>
+    <div class="modal-content">
+        <div class="box">
+            <button type="button" class="button is-danger ml-0 m-2" id="cancelSignIn">Cancel</button>
+
+            <form>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="signinEmail" class="input is-success" type="text" placeholder="Email" value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="signinPassword" class="input is-success" type="password" placeholder="Password"
+                            value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+
+                </div>
+
+                <button class="button" type="button" id="GoogleLogin">
+                    <span class="icon">
+                        <i class="fa-brands fa-google"></i>
+                    </span>
+                    <span>Continue With Google</span>
+                </button>
+                <button href="index.html" id="signinDone" type="button" class="button is-primary">Submit</button>
+
+
+        </div>
+        </form>
+    </div>
+</div>
+</div>
 <script src="app.js"></script>
+<script src="contact.js"></script>
 
 </html>

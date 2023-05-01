@@ -10,6 +10,10 @@ document.getElementById("signupDone").addEventListener('click', function () {
             var user = userCredential.user;
             console.log(user)
             // ...
+            db.collection('users').doc(user.uid).set({
+                email: email
+            })
+
             document.getElementById('notifications').innerHTML += "<div class='notification is-success'>Account Created</div>"
         })
         .catch((error) => {
@@ -79,9 +83,27 @@ document.getElementById('GoogleLogin').addEventListener('click', function () {
     console.log("clicked")
     auth.signInWithRedirect(provider);
 });
+// auth.getRedirectResult().then((result) => {
+//     if (result.credential) {
+//         // This gives you a Google Access Token. You can use it to access the Google API.
+//         var credential = result.credential;
+//         console.log(credential)
+//         // ...
+//     }
+//     // The signed-in user info.
+//     var user = result.user;
+//     var email = user.email;
+//     db.collection('users').doc(user.uid).set({
+//         email: email
+//     });
+// });
 auth.onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
+        email=user.email;
+        db.collection('users').doc(user.uid).set({
+            email: email
+        });
         document.getElementById('notifications').innerHTML += "<div class='notification is-success'>Signed In</div>"
         setTimeout(function () {
             document.getElementById('notifications').innerHTML = ""
@@ -120,12 +142,14 @@ function enableAdminMode() {
 
 getUidAsync().then(function (uid) {
     db.collection("users").doc(uid).get().then(function (data) {
-        if (data.data().admin == true) {
-            document.getElementById('notifications').innerHTML += "<div class='notification is-warning'>Admin Mode Enabled</div>"
-            setTimeout(function () {
-                document.getElementById('notifications').innerHTML = ""
-            }, 3000)
-            enableAdminMode();
+        if (data.data().admin) {
+            if (data.data().admin == true) {
+                document.getElementById('notifications').innerHTML += "<div class='notification is-warning'>Admin Mode Enabled</div>"
+                setTimeout(function () {
+                    document.getElementById('notifications').innerHTML = ""
+                }, 3000)
+                enableAdminMode();
+            }
         } else {
 
         }

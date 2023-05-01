@@ -6,7 +6,6 @@ db.collection('items').get().then((snapshot) => {
 
 
 function renderMenu(doc) {
-    console.log(doc)
     var id = doc.id
     var cat = doc.data().category
     var name = doc.data().name
@@ -29,35 +28,35 @@ function renderMenu(doc) {
         var div = document.getElementById("tileParCupcakes");
     }
 
-    div.innerHTML += "<div class='tile is-child box is-2'> <div class='is-danger'> <button class='button is-danger admin is-hidden' onClick=deleteItem('" + id + "')> <i class='fa-sharp fa-solid fa-trash'></i> </button> </div> <p class='title'>" + name + "</p>  <p class='subtitle'>" + price + "</p>  <p class='subtitle'>" + desc + "</p>  <p class='subtitle'>" + cat + "</p>  <figure class='image is-4by3'>    <img src='" + img + "'>  </figure> <button class='button m-2 has-background-success' onClick=addToCart('" + id + "')>Add to Cart</button></div>"
+    div.innerHTML += "<div class='tile is-child box is-2'> <p class='title'>" + name + "</p>  <p class='subtitle'>" + price + "</p>  <p class='subtitle'>" + desc + "</p>  <p class='subtitle'>" + cat + "</p>  <figure class='image is-4by3'>    <img src='" + img + "'>  </figure> <button class='button m-2 has-background-success' onClick=addToCart('" + id + "')>Add to Cart</button></div>"
 }
-auth.onAuthStateChanged(function (user) {
-    if (user) {
-        getUidAsync().then(function (uid) {
-            db.collection("users").doc(uid).get().then(function (data) {
-                if (data.data().admin == true) {
-                    enableAdminMenu();
-                } else {}
-            })
-        });
-    } else {
-        disableAdminMenu();
-    }
-})
+// auth.onAuthStateChanged(function (user) {
+//     if (user) {
+//         getUidAsync().then(function (uid) {
+//             db.collection("users").doc(uid).get().then(function (data) {
+//                 if (data.data().admin == true) {
+//                     enableAdminMenu();
+//                 } else {}
+//             })
+//         });
+//     } else {
+//         disableAdminMenu();
+//     }
+// })
 
-function enableAdminMenu() {
-    console.log("admin mode enabled")
-    document.querySelectorAll(".admin").forEach(function (el) {
-        el.classList.remove("is-hidden")
-    })
-}
+// function enableAdminMenu() {
+//     console.log("admin mode enabled")
+//     document.querySelectorAll(".admin").forEach(function (el) {
+//         el.classList.remove("is-hidden")
+//     })
+// }
 
-function disableAdminMenu() {
-    console.log("admin mode disabled")
-    document.querySelectorAll(".admin").forEach(function (el) {
-        el.classList.add("is-hidden")
-    })
-}
+// function disableAdminMenu() {
+//     console.log("admin mode disabled")
+//     document.querySelectorAll(".admin").forEach(function (el) {
+//         el.classList.add("is-hidden")
+//     })
+// }
 
 var cartItems = [];
 // auth.onAuthStateChanged(loadCart());
@@ -130,16 +129,7 @@ function loadCart() {
 // })
 
 
-function deleteItem(ID) {
-    console.log("Deleting Item");
-    console.log(ID);
-    db.collection("items").doc(ID).delete().then(function () {
-        console.log("Document successfully deleted!");
-        location.reload();
-    }).catch(function (error) {
-        console.error("Error removing document: ", error);
-    });
-};
+
 
 async function getUidAsync() {
     while (auth.currentUser == null) {
@@ -164,7 +154,7 @@ document.getElementById("PlaceOrderBtn").addEventListener('click', function () {
     var phone = document.getElementById("checkoutPhone").value;
     var specialNotes = document.getElementById("checkoutSpecialNotes").value;
     var time = new Date().toString();
-    
+
 
     if (name == "" || email == "" || phone == "") {
         document.getElementById("notifications").innerHTML += "<div class='notification is-danger'>Please fill in all fields</div>"
@@ -177,7 +167,8 @@ document.getElementById("PlaceOrderBtn").addEventListener('click', function () {
         phone: phone,
         items: cartItems,
         specialNotes: specialNotes,
-        time: time
+        time: time,
+        status: "Pending"
 
     }).then(function (docRef) {
         console.log("Document written with ID: ", docRef.id);
