@@ -32,6 +32,7 @@ function renderOrder(data) {
         <p class='subtitle'>Special Notes: " + data.data().specialNotes + "</p>\
         <p class='title'>Items: </p> \
         <p class='subtitle'>" + itemString + "</p>\
+        <p class='subtitle'>Status: " + data.data().status + "</p>\
         <button class='button is-success' onclick='completeOrder(\"" + data.id + "\")'>Complete</button>\
       </div>"
 }
@@ -92,6 +93,7 @@ function renderUser(doc) {
 };
 
 db.collection('items').get().then(function (data) {
+    //TODO: add filter for category or item
     data.forEach(function (doc) {
         renderItem(doc);
     })
