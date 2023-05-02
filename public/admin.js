@@ -67,7 +67,16 @@ function completeOrder(id) {
         status: "complete"
     }).then(function () {
         location.reload();
-    })
+    }).catch(function (error) {
+        console.error("Error updating document: ", error);
+        document.getElementById('notifications').innerHTML = "<div class='notification is-danger'> \
+        <p> Error updating document: " + error + "</p>\
+        </div>"
+        setTimeout(function () {
+            document.getElementById('notifications').innerHTML = "";
+        }, 3000);
+    });
+
 };
 
 function deleteContact(id) {
@@ -132,6 +141,13 @@ function deleteItem(ID) {
         location.reload();
     }).catch(function (error) {
         console.error("Error removing document: ", error);
+        document.getElementById('notifications').innerHTML = "<div class='notification is-danger'> \
+        <p> Error removing document: " + error + "</p>\
+        </div>"
+        setTimeout(function () {
+            document.getElementById('notifications').innerHTML = "";
+        }, 3000);
+
     });
 };
 

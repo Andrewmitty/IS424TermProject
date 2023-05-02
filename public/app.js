@@ -58,6 +58,13 @@ document.getElementById('signinDone').addEventListener('click', function () {
         })
 });
 
+function enableAdminMode() {
+    document.getElementById('adminLink').classList.remove('is-hidden');
+}
+
+function disableAdminMode() {
+    document.getElementById('adminLink').classList.add('is-hidden');
+}
 //add same for signout
 document.getElementById('signout').addEventListener('click', function () {
     signOut();
@@ -80,6 +87,11 @@ function signOut() {
     });
 }
 document.getElementById('GoogleLogin').addEventListener('click', function () {
+    console.log("clicked")
+    auth.signInWithRedirect(provider);
+});
+
+document.getElementById('GoogleSignUp').addEventListener('click', function () {
     console.log("clicked")
     auth.signInWithRedirect(provider);
 });
@@ -114,6 +126,7 @@ auth.onAuthStateChanged(function (user) {
 
     } else {
         // No user is signed in.
+        disableAdminMode();
         document.getElementById('signin').classList.remove('is-hidden');
         document.getElementById('signup').classList.remove('is-hidden');
         document.getElementById('signout').classList.add('is-hidden');
@@ -136,9 +149,7 @@ async function getUidAsync() {
     return auth.currentUser.uid;
 }
 
-function enableAdminMode() {
-    document.getElementById('adminLink').classList.remove('is-hidden');
-}
+
 
 getUidAsync().then(function (uid) {
     console.log(uid)
@@ -154,6 +165,7 @@ getUidAsync().then(function (uid) {
                 enableAdminMode();
             }
         } else {
+
 
         }
     })
