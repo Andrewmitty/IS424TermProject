@@ -1,4 +1,4 @@
-db.collection("orders").where('status', '!=', 'complete').get().then(function (data) {
+db.collection("orders").where('status', '!=', 'complete').orderBy('status').orderBy("time", "desc").get().then(function (data) {
     data.forEach(function (doc) {
         renderOrder(doc);
     })
@@ -8,7 +8,7 @@ db.collection("orders").where('status', '!=', 'complete').get().then(function (d
 function loadAllOrders() {
     document.getElementById('ordersColumn').innerHTML = "<p class='title'>All Orders</p>";
 
-    db.collection("orders").get().then(function (data) {
+    db.collection("orders").orderBy('time', 'desc').get().then(function (data) {
         data.forEach(function (doc) {
             renderOrder(doc);
         })
@@ -98,6 +98,7 @@ function renderUser(doc) {
         <p class='subtitle'>Name: " + doc.data().name + "</p>\
         <p class='subtitle'>Admin: " + doc.data().admin + "</p>\
         <button class='button is-danger' onclick='makeAdmin(\"" + doc.id + "\")'>Make Admin</button>\
+        <button class='button is-danger' onclick='removeAdmin(\"" + doc.id + "\")'>Remove Admin</button>\
         </div>"
 };
 
@@ -112,12 +113,11 @@ document.getElementById('addItemBtn').addEventListener('click', function () {
     console.log("Clicked");
 
 });
-
+// <p class='subtitle'>Description: " + doc.data().description + "</p>\ add for description to be rendered in the admin page
 function renderItem(doc) {
     var div = document.getElementById("itemsColumn");
     div.innerHTML += "<div class='box'> \
         <p class='title'> Name: " + doc.data().name + "</p>\
-        <p class='subtitle'>Description: " + doc.data().description + "</p>\
         <p class='subtitle'>Price: " + doc.data().price + "</p>\
         <p class='subtitle'>Image: <br> <img src='" + doc.data().image + "'></p>\
         <p class='subtitle'>Category: " + doc.data().category + "</p>\
@@ -132,6 +132,14 @@ function makeAdmin(uid) {
         location.reload();
     })
 };
+
+function removeAdmin(uid) {
+    db.collection('users').doc(uid).update({
+        admin: false
+    }).then(function () {
+        location.reload();
+    })
+}
 
 function deleteItem(ID) {
     console.log("Deleting Item");

@@ -27,8 +27,8 @@ function renderMenu(doc) {
     } else if (cat == "Cupcakes") {
         var div = document.getElementById("tileParCupcakes");
     }
-
-    div.innerHTML += "<div class='tile is-child box is-2'> <p class='title'>" + name + "</p>  <p class='subtitle'>" + price + "</p>  <p class='subtitle'>" + desc + "</p>  <p class='subtitle'>" + cat + "</p>  <figure class='image is-4by3'>    <img src='" + img + "'>  </figure> <button class='button m-2 has-background-success' onClick=addToCart('" + id + "')>Add to Cart</button></div>"
+// "</p>  <p class='subtitle'>" + desc + "</p> add for description to be rendered in the menu page
+    div.innerHTML += "<div class='tile is-child box is-2'> <p class='title'>" + name + "</p>  <p class='subtitle'>" + price + "  <p class='subtitle'>" + cat + "</p>  <figure class='image is-4by3'>    <img src='" + img + "'>  </figure> <button class='button m-2 has-background-success' onClick=addToCart('" + id + "')>Add to Cart</button></div>"
 }
 // auth.onAuthStateChanged(function (user) {
 //     if (user) {
