@@ -115,9 +115,9 @@ document.getElementById('addItemBtn').addEventListener('click', function () {
 });
 // <p class='subtitle'>Description: " + doc.data().description + "</p>\ add for description to be rendered in the admin page
 function renderItem(doc) {
-    var div = document.getElementById("itemsColumn");
+    var div = document.getElementById("renderedItems");
     div.innerHTML += "<div class='box'> \
-        <p class='title'> Name: " + doc.data().name + "</p>\
+        <p class='title'> " + doc.data().name + "</p>\
         <p class='subtitle'>Price: " + doc.data().price + "</p>\
         <p class='subtitle'>Image: <br> <img src='" + doc.data().image + "'></p>\
         <p class='subtitle'>Category: " + doc.data().category + "</p>\
@@ -224,3 +224,22 @@ document.getElementById('submitItem').addEventListener('click', function () {
 
 
 });
+
+function filterCat() {
+    var category = document.getElementById('itemSortCat').value;
+    var div = document.getElementById("renderedItems");
+    div.innerHTML = "";
+    if (category == "All") {
+        db.collection('items').get().then(function (data) {
+            data.forEach(function (doc) {
+                renderItem(doc);
+            })
+        })
+    } else {
+        db.collection('items').where("category", "==", category).get().then(function (data) {
+            data.forEach(function (doc) {
+                renderItem(doc);
+            })
+        })
+    }
+};

@@ -120,6 +120,24 @@
             <button id="addItemBtn" class="button is-link m-3" type="button"
                 onClick="document.getElementById('addItemModal').classList.add('is-active')" type="button">Add an
                 Item</button>
+            <div class="field">
+                <label class="label">Filter by Category</label>
+                <div class="control">
+                    <div class="select">
+                        <select id="itemSortCat">
+                            <option value="All">Select an option</option>
+                            <option value="Mains">Mains</option>
+                            <option value="Beverages">Beverages</option>
+                            <option value="Appetizers">Appetizers</option>
+                            <option value="Cakes">Cakes</option>
+                            <option value="Dessert">Dessert</option>
+                            <option value="Cupcakes">Cupcakes</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button id="filterItems" type="button" onClick="filterCat()" class="button is-success">Apply Filter</button>
+            <div id="renderedItems"></div>
         </div>
 
     </div>
