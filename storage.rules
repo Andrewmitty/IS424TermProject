@@ -2,8 +2,10 @@ rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
     match /{allPaths=**} {
-      allow read: if true;
-      allow write, update, delete: if firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.admin == true;
+      allow read, write: if true;
+      // allow write, update, delete: if firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.admin == true;
+      allow delete, update: if false;
+      
     }
   }
 }

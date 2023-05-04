@@ -215,6 +215,7 @@ document.getElementById('submitItem').addEventListener('click', function () {
                         setTimeout(function () {
                             document.getElementById('notifications').innerHTML = ""
                         }, 3000)
+                        location.reload();
                     });
 
                 }
